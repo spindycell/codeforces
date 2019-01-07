@@ -1,23 +1,18 @@
-#include<iostream>
-#include<set>
-#include<vector>
-#include<map>
-#include<utility>
+#include<bits/stdc++.h>
 using namespace std;
 
-int main(){
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    pair<char,int> v;
-    char x;
-    int s;
-    int n;
-    cin >> n;
-    for(int i=0; i<n; i++){
-        cin >> x;
-        cin >> s;
-        v.make_pair(s,x);
+int rdn(int dd, int mm, int yy) {
+    int tm=mm, ty=yy;
+    if (mm<3){
+        ty--;
+        tm+=12;
     }
-    pair<char,int> > p = v.make_pair('a',1);
-    if(std::find(v.begin(), v.end(), p) != v.end()) cout << "yes";
+    return 365*ty+ty/4-ty/100+ty/400+(153*tm-457)/5+dd-306-1;
+}
+
+int main(){
+    int d,m,y;
+    cin >> d >> m >> y;
+
+    cout << rdn(d,m,y) << endl;
 }
