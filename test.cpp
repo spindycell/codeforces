@@ -1,17 +1,29 @@
-#include<bits/stdc++.h>
-#define ll long long
+#include <bits/stdc++.h>
 using namespace std;
 
-ll euclid(ll a,ll b){
-    if(b==0)
-        return a;
-    else
-        return euclid(b,a%b);
-}
+int main (){
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);
+    cout.tie(0);
+    int n, m, duaPangkatn=1;
+    bool bisaDiMod=false;
 
+    cin >> n >> m;
 
-int main(){
-    ll a,b;
-    cin >> a,b;
-    cout << euclid(a,b) << endl;
+    for (int i=1; i<=n; i++){
+        duaPangkatn*=2;
+        if (m==duaPangkatn && i==n){
+            cout << 0 << "\n";
+            bisaDiMod=true;
+            break;
+        } else if (duaPangkatn>=m){
+            cout << m << "\n";
+            bisaDiMod=true;
+            break;
+        }
+    }
+
+    if (bisaDiMod==false){
+        cout << m%duaPangkatn << "\n";
+    }
 }
