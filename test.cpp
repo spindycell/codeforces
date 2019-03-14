@@ -1,29 +1,34 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
 
-int main (){
-    ios_base::sync_with_stdio(false);
-    cin.tie(0);
-    cout.tie(0);
-    int n, m, duaPangkatn=1;
-    bool bisaDiMod=false;
+int main(){
+    int t;
+    cin >> t;
+    while(t--){
+        int n,d,r,ans=0;
+        cin >> n >> d >> r;
 
-    cin >> n >> m;
-
-    for (int i=1; i<=n; i++){
-        duaPangkatn*=2;
-        if (m==duaPangkatn && i==n){
-            cout << 0 << "\n";
-            bisaDiMod=true;
-            break;
-        } else if (duaPangkatn>=m){
-            cout << m << "\n";
-            bisaDiMod=true;
-            break;
+        vector<int> morning,afternoon;
+        for(int i=0; i<n; i++){
+            int x;
+            cin >> x;
+            morning.push_back(x);
         }
-    }
+        for(int i=0; i<n; i++){
+            int x;
+            cin >> x;
+            afternoon.push_back(x);
+        }
 
-    if (bisaDiMod==false){
-        cout << m%duaPangkatn << "\n";
+        sort(morning.begin(),morning.end());
+        sort(afternoon.begin(),afternoon.end());
+        for(int i=0; i<n; i++){
+            int temp;
+            temp = d-morning[i];
+            auto it = upper_bound(afternoon.begin(),afternoon.end(),temp);
+            int wow = it-afternoon.begin()-i;
+            cout << temp << ' ';
+            cout << wow << endl;
+        }
     }
 }
