@@ -3,25 +3,21 @@
 using namespace std;
 
 int main(){
-	#ifndef ONLINE_JUDGE
-		freopen("./a.in","r",stdin);
-		freopen("./a.out","w",stdout);
-	#endif
 	ll n,m;
 	cin >> n >> m ;
-	std::vector<ll> v(0,n+1);
+	ll v[n+5];
+	memset(v,0,sizeof(v));
 	for(int i=0; i<m; i++){
 		ll x,ans;
 		cin >> x;
 		ans = x;
-		while(x<=n && v[x]==0){
-			v[x]=ans;
-			x++;
+		for(int j=x-1; j<n && v[j]<=0; j++){
+            v[j]=ans;
 		}
 	}
-	cout << n << endl;
 	for(int i=0; i<n; i++){
 		cout << v[i] << ' ' ;
 	}
 
 }
+
